@@ -25,7 +25,7 @@ If everything went ok
 
 Now it is time to program it (you can do it with the command line or with the GUI)
 BUT, wait a moment, in order to program it you need to power it externally with 5V (yes, you can use expansion header and connect 5V and GND there)
-
+You will need the following file https://github.com/S0urceror/MSX-USB/blob/master/hardware/quartus/output_files/MSXUSB.pof
 ```
 ./quartus_pgm -m jtag -o "p;./MSXUSB.pof"
 ```
@@ -37,7 +37,7 @@ By applying 12V to CPLD pin OE1 (44) with a 2k2 resistor for a minute I was able
 ### Step 2. Flash memory
 You will need a programmer such as TL866 II 
 Also it seem to be posible to program it from the MSX itself but I have not done this yet. I will let explore this option (please read original S0urceror version).
-https://github.com/S0urceror/MSX-USB/blob/master/drivers/NextorUsbHost/dist/nextor.rom
+The file neded is https://github.com/S0urceror/MSX-USB/blob/master/drivers/NextorUsbHost/dist/nextor.rom
 
 ### Step 3. Select a valid USB drive
 Not all USB drives will work, I have detected that the ones with the following EnpointAddress values will work. It will probably work if you have the values shown below
@@ -49,7 +49,9 @@ bEndpointAddress 0x82 EP 2 IN
 ```
 
 ### Step 4. Prepare a disk
-If you have a MSX1 (i.e. VG8020, ...) you will be limited to 720kb disks and FAT12.
+You will find the necessary system files in https://github.com/S0urceror/MSX-USB/tree/master/software/dist
+
+- If you have a MSX1 (i.e. VG8020, ...) you will be limited to 720kb disks and FAT12.
 To create a MSX disk image I use dsktool from https://github.com/nataliapc/MSX_devs/tree/master/dsktool
 ```
 #create disk
@@ -62,7 +64,7 @@ Next, flash it. **Warning: check if your device is /dev/sda**
 dd if=MYDISK.DSK of=/dev/sda
 ```
 
-If you are a lucky MSX2 owner you will need COMMAND2.COM and NEXTOR.SYS instead and you will not need for FAT12 partition.
+- If you are a lucky MSX2 owner you will need COMMAND2.COM and NEXTOR.SYS instead and you will not need for FAT12 partition.
 
 
 ## Some history
