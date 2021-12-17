@@ -64,7 +64,7 @@ Next, flash it. **Warning: check if your device is /dev/sda**
 dd if=MYDISK.DSK of=/dev/sda
 ```
 
-- If you are a lucky MSX2 owner you will need COMMAND2.COM and NEXTOR.SYS instead and you will not need for FAT12 partition.
+- If you are a lucky MSX2 owner you will need a FAT16 partition of 16Mb with COMMAND2.COM and NEXTOR.SYS.
 
 
 ## Some history
