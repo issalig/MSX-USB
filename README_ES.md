@@ -2,7 +2,8 @@
 ## Mi fork y guía de construcción
 Mi fork proporciona una versión reducida de la pcb con zócalos PLC, una cabecera de expansión, así como una guía de construcción detallada. Todas las demás cosas son iguales a la versión original de S0urceror y desde aquí le mando muchas gracias por compartir sus conocimientos.
 
-Ya que he construido el cartucho desde cero, os contaré algunos de los problemas que encontré y que felizmente resolví.
+Ya que he construido el cartucho desde cero, os contaré algunos de los problemas que encontré y que felizmente he resuelto.
+Si ya tienes el hardware funcionando puede saltar directamente al paso 4.
 
 ### Paso 1: Programar CPLD
 Se nececista el componente obsoleto EPM7064SLC44, la parte importante aquí es **SLC**, EPM7064SLC44-10 también es válido. Se pueden obtener de ali y otros lugares, pero como se reciclan/recuperan de los contenedores de basura, es normal que sólo funcionen el 50%, así que pide el doble. Aquí dejo un enlace posible https://aliexpress.com/item/1005001512009032.html pero hay una gran cantidad de vendedores.
