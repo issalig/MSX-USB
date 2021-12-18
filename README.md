@@ -49,7 +49,7 @@ It happens that some of the refurbished units come with programs that used JTAG 
 - Hopefully some CPLD's are working now! 
 
 ### Step 2. Flash memory
-Valid memory chips are SST39SF040 (512kb) or SST39SF020 (256kb). Then, you will need a programmer such as TL866 II https://aliexpress.com/item/33000308958.html and the file we will write is located at https://github.com/S0urceror/MSX-USB/blob/master/drivers/NextorUsbHost/dist/nextor.rom
+Recommended memory chips is SST39SF040 (512kb) but I also managed to make it work with SST39SF020 (256kb). Then, you will need a programmer such as TL866 II https://aliexpress.com/item/33000308958.html and the file we will write is located at https://github.com/S0urceror/MSX-USB/blob/master/drivers/NextorUsbHost/dist/nextor.rom
 
 If you prefer to use a command line tool I suggest you minipro https://gitlab.com/DavidGriffith/minipro
 
