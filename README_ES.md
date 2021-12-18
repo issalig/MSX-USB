@@ -77,10 +77,10 @@ bEndpointAddress 0x82 EP 2 IN
 ```
 
 ### Paso 4. Prepara un disco
-Una vez que estemos aquí, se cumplen todos los requisitos de hardware, sí, ¡puedes ir a tomar una cerveza ahora!
-Es solo cuestión de crear una imagen de disco con los archivos del sistema proporcionados en https://github.com/S0urceror/MSX-USB/tree/master/software/dist
+Una vez que hemos llegado aquí, ya se cumplen todos los requisitos de hardware, sí, **¡puedes ir a tomar una birra ahora!**
+Lo que queda es solo cuestión de crear una imagen de disco con los archivos del sistema proporcionados en https://github.com/S0urceror/MSX-USB/tree/master/software/dist
 
-- Si tiene un MSX1 (es decir, VG8020, ...) estará limitado a discos de 720kb y FAT12. No te quejes, ¿sigues prefiriendo una videocámara lenta?
+- Si tienes un MSX1 (p. ej., VG8020, ...) está limitado a discos de 720kb y FAT12. No te quejes, ¿sigues prefiriendo el lento lector de cassettes?
 Para crear una imagen de disco MSX utilizo dsktool de https://github.com/nataliapc/MSX_devs/tree/master/dsktool
 ```
 #create disk
@@ -91,7 +91,7 @@ dsktool a MYDISK.DSK COMMAND.COM MSXDOS.SYS
 dsktool a MYDISK.DSK MYGAME.COM
 ```
 
-Luego, muéstrelo. ** Advertencia: compruebe si su dispositivo es / dev / sda ** o destruirá algo. Si eres un usuario de Windows, tal vez Rufus pueda escribir la imagen, si funciona, infórmalo.
+Y ahora vamos a flashearlo. **Advertencia: comprueba si tu dispositivo es /dev/sda** o vendrán los lloros. Si eres un usuario de Windows, tal vez Rufus pueda escribir la imagen, si funciona, cuéntanoslo.
 
 
 ```
@@ -100,4 +100,5 @@ sudo dd if=MYDISK.DSK of=/dev/sda
 
 - Si eres un afortunado propietario de MSX2, necesitarás una partición FAT16 de 16Mb con COMMAND2.COM y NEXTOR.SYS. Puedes hacerlo con gparted en linux, como siempre informa cómo se hace con windows.
 
-Desconecta el stick de la computadora, conéctalo al msxusb, enciende el MSX y listo. ** ¡Disfruta! ** 
+Desconecta el pendrive del pc, conéctalo al msxusb, enciende el MSX y listo. 
+**¡Disfruta!** 
