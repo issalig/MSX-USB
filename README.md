@@ -1,6 +1,6 @@
 # MSX-USB
 ## My fork and DIY guide
-My fork provides a minified version of the pcb with PLC44 sockets and a header expansion as well as detailed building guide. All the other things are the same as original S0urceror version and I send him a great thanks for sharing.
+My fork provides a minified version of the pcb with PLC sockets and a header expansion as well as detailed building guide. All the other things are the same as original S0urceror version and I send him lots of thanks for sharing his knowledge.
 
 As I built the cartridge from the scratch I will tell you some of the problems I faced and happily solved out.
 
