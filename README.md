@@ -83,6 +83,8 @@ It is only a matter of creating a disk image with the system files provided at h
 
 - If you have a MSX1 (i.e. VG8020, ...) you will be limited to 720kb disks and FAT12. Do not complain, do you still prefer a slow datacorder?
 To create a MSX disk image I use dsktool from https://github.com/nataliapc/MSX_devs/tree/master/dsktool
+
+I also provide linux and windows version of dsktool in order to make it easier, you can get them at https://github.com/issalig/MSX-USB/tree/master/software/utils
 ```
 #create disk
 dsktool c MYDISK.DSK
