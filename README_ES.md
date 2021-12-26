@@ -83,6 +83,9 @@ Lo que queda es solo cuestión de crear una imagen de disco con los archivos del
 
 - Si tienes un MSX1 (p. ej., VG8020, ...) está limitado a discos de 720kb y FAT12. No te quejes, ¿sigues prefiriendo el lento lector de cassettes?
 Para crear una imagen de disco MSX utilizo dsktool de https://github.com/nataliapc/MSX_devs/tree/master/dsktool
+
+Para hacer la vida más fácil, he dejado versiones de dsktool para linux y windows en https://github.com/issalig/MSX-USB/tree/master/software/utils
+
 ```
 #create disk
 dsktool c MYDISK.DSK
