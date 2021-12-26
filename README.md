@@ -105,9 +105,28 @@ Next, flash it. **Warning: check if your device is /dev/sda** or you will destro
 sudo dd if=MYDISK.DSK of=/dev/sda
 ```
 
-- If you are a lucky MSX2 owner you will need a FAT16 partition of 16Mb with COMMAND2.COM and NEXTOR.SYS. You can do it with gparted in linux, as usual report how is it done with windows.
+- If you are a lucky MSX2 owner you will need a FAT16 partition of 16Mb with COMMAND2.COM and NEXTOR.SYS.
 
+In Linux I have created an image available at https://github.com/issalig/MSX-USB/blob/master/software/utils/msx2.zip. You can do it with the following commands.
+```
+#create a 16 Mb disk and format it to FAT16
+sudo  dd if=/dev/zero of=msx2.dsk bs=1024 count=16k
+sudo mkfs.fat -F 16 msx2.dsk
+
+#mount it
+mkdir 16mb 
+sudo mount -o loop msx2.dsk 16mb/
+
+#copy all the stuff
+sudo cp COMMAND2.COM NEXTOR.SYS 16mb
+
+#unmount it and flash it
+sudo umount 16mb
+sudo dd if=msx2.dsk of=/dev/sda bs=16M
+```
 Unplug the stick from the computer, plug it in the msxusb, switch on the MSX and you are in. **Enjoy!**
+
+As usual report how is it done with windows (maybe mini partition tool can help but I have never tried it).
 
 ## Some history
 In the 80's the MSX standard was created by Kazuhiko Nishi. He envisioned a simple yet powerful home computer based on standard hardware, software (BIOS/MSX DOS) and connectivity. From 1983 to 1990 manufacturers, like Philips, Sony, Yamaha, Sharp, Canon and many more, made computers according to this standard.
