@@ -102,7 +102,26 @@ Y ahora vamos a flashearlo. **Advertencia: comprueba si tu dispositivo es /dev/s
 sudo dd if=MYDISK.DSK of=/dev/sda
 ```
 
-- Si eres un afortunado propietario de MSX2, necesitarás una partición FAT16 de 16Mb con COMMAND2.COM y NEXTOR.SYS. Puedes hacerlo con gparted en linux, como siempre informa cómo se hace con windows.
+- Si eres un afortunado propietario de MSX2, necesitarás hacer una partición FAT16 de 16Mb con COMMAND2.COM y NEXTOR.SYS disponibles en https://github.com/issalig/MSX-USB/blob/master/software/dist. Puedes hacerlo con gparted en linux, como siempre informa cómo se hace con windows.
+- 
+
+He creado una imagen de 16mb con FAT16 que está disponible en https://github.com/issalig/MSX-USB/blob/master/software/utils/msx2.zip. En Linux puedes hacerlo con los siguientes comandos.
+```
+#create a 16 Mb disk and format it to FAT16
+sudo  dd if=/dev/zero of=msx2.dsk bs=1024 count=16k
+sudo mkfs.fat -F 16 msx2.dsk
+
+#mount it
+mkdir 16mb 
+sudo mount -o loop msx2.dsk 16mb/
+
+#copy all the stuff
+sudo cp COMMAND2.COM NEXTOR.SYS 16mb
+
+#unmount it and flash it
+sudo umount 16mb
+sudo dd if=msx2.dsk of=/dev/sda bs=16M
+```
 
 Desconecta el pendrive del pc, conéctalo al msxusb, enciende el MSX y listo. 
 **¡Disfruta!** 
