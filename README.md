@@ -7,7 +7,7 @@ As I built the cartridge from the scratch I will tell you some of the problems I
 ### Step 0: Make a PCB
 When I saw original S0urceror design I thought that maybe using PLC sockets could make the pcb smaller, then I tried to shrink everything into the minimum space with the maximum capabilities and that's why I added a expansion header. I am using https://www.kicad.org/ for the PCB layout and https://freerouting.org/ for the routing. I find freerouting extremely useful since there are a lot of connections and a small place to do the job. Sometines freerouting does not find the solution and you need to finish it manually. If this happens you can also lower clearance matrix values down to 125-150. Also using freerouting allows you to change the location of components without the need to re-route everything again.
 
-Of course if you are satisfied with my design just can just use the files provided. Otherwise you can improve the design and share it.
+Last version of the pcb is kicad-cpld-mini-v2 (ch376 is in front but still *untested*) and kicad-cpld-mini (ch376 is in the back side and *tested ok*).  Of course if you are satisfied with my design just can just use the files provided. Otherwise you can improve the design and share it.
 
 ### Step 1: Program CPLD
 You will need the obsolete part EPM7064SLC44, the important part here is **SLC**, EPM7064SLC44-10 is also valid. You can get them from ali and other places but as they are refurbished/recovered from dumpsters expect to have only 50% working, so order double. Here is a possible link https://aliexpress.com/item/1005001512009032.html but there is a myriad of sellers.
