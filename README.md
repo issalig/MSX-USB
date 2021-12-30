@@ -98,6 +98,7 @@ dsktool a MYDISK.DSK COMMAND.COM MSXDOS.SYS
 #add other files
 dsktool a MYDISK.DSK MYGAME.COM
 ```
+In case you prefer a GUI program you can also use DiskMgr http://www.lexlechz.at/en/software/DiskMgr.html
 
 Next, flash it. **Warning: check if your device is /dev/sda** or you will destroy something. If you are a windows user maybe Rufus can write the image, if it works, please report it. 
 
