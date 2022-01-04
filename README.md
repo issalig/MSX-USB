@@ -53,7 +53,7 @@ It happens that some of the refurbished units come with programs that used JTAG 
 - Disconnect 12V, connect 5V and try to program it.
 - Hopefully some CPLD's are working now! 
 
-### Step 1c. Use an still produced CPLD, use a  ATF1504AS
+### Step 1c. Use an still in production CPLD, use a ATF1504AS
 As seen in https://www.eevblog.com/forum/fpga/atmel-atf150x-cpld-and-wincupl/msg3113922/#msg3113922 ATF1504AS is pin compatible to EPM7064.
 The changes are: we will need to convert .pof into .jed and then into .svf, 
 
