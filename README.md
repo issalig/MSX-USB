@@ -54,8 +54,8 @@ It happens that some of the refurbished units come with programs that used JTAG 
 - Hopefully some CPLD's are working now! 
 
 ### Step 1c. Use an still in production CPLD, use a ATF1504AS
-As seen in https://www.eevblog.com/forum/fpga/atmel-atf150x-cpld-and-wincupl/msg3113922/#msg3113922 ATF1504AS is pin compatible to EPM7064.
-The changes are: we will need to convert .pof into .jed and then into .svf, 
+As seen in https://www.eevblog.com/forum/fpga/atmel-atf150x-cpld-and-wincupl/msg3113922/#msg3113922 ATF1504AS is pin compatible to EPM7064 and it is a valid replacement for EPM7064.
+The changes are not that big: we will need to convert .pof into .jed and then into .svf.
 
 I compiled the following info from different sources https://github.com/marqs85/snes_dejitter/blob/master/README.md, https://github.com/SukkoPera/OpenAmiga500FastRamExpansion/blob/master/firmware/README.md and https://www.hackup.net/2020/01/erasing-and-programming-the-atf1504-cpld/
 
