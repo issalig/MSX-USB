@@ -53,6 +53,73 @@ It happens that some of the refurbished units come with programs that used JTAG 
 - Disconnect 12V, connect 5V and try to program it.
 - Hopefully some CPLD's are working now! 
 
+### Step 1c. Use an still produced CPLD, use a  ATF1504AS
+As seen in https://www.eevblog.com/forum/fpga/atmel-atf150x-cpld-and-wincupl/msg3113922/#msg3113922 ATF1504AS is pin compatible to EPM7064.
+The changes are: we will need to convert .pof into .jed and then into .svf, 
+
+I compiled the following info from different sources https://github.com/marqs85/snes_dejitter/blob/master/README.md, https://github.com/SukkoPera/OpenAmiga500FastRamExpansion/blob/master/firmware/README.md and https://www.hackup.net/2020/01/erasing-and-programming-the-atf1504-cpld/
+
+First we need to download pof2jef from http://ww1.microchip.com/downloads/archive/pof2jed.zip
+Then in winpof2jed.exe (yes it works with wine in linux :))
+```
+1. Select .pof file from previous step as input file
+2. Select 1504AS as device
+3. Change the following options:
+  * Reduce MC power -> On
+  * Open Collector -> Off
+  * JTAG mode -> On
+  * Slew rate -> Slow
+4. Click "Run"
+```
+
+The important thing here is JTAG Mode **ON**, if you are wrong you will block JTAG but don't panic, we already know that applying 12V it will be enabled again.
+
+Once we have the .jed file it is time to generate svf with ATMISP that you can download it from http://ww1.microchip.com/downloads/en/DeviceDoc/ATMISP7.zip. Then, you should follow these steps.
+
+```
+1. Create a new device chain via File->New
+2. Set number of devices to 1
+3. Set device to ATF1504AS
+4. Set JTAG instruction to "Program/Verify"
+5. Select .jed file from previous step as JEDEC file
+6. Name your svf file
+7. Click "OK"
+8. Tick "Write SVF file" and click "Run"
+```
+
+We are almost there. We just need to flash it with openocd
+
+But first we need the config file for usbblaster and you can save it as altera-usb-blaster.cfg
+```
+#
+# Altera USB-Blaster
+#
+# http://www.altera.com/literature/ug/ug_usb_blstr.pdf
+#
+
+interface usb_blaster
+usb_blaster_lowlevel_driver ftdi
+# These are already the defaults.
+# usb_blaster_vid_pid 0x09FB 0x6001
+# usb_blaster_device_desc "USB-Blaster"
+adapter_khz 3000
+```
+
+And this is the magical line that will flash your CPLD (Do not forget to power usbblaster with external 5V)
+
+```
+ openocd -f altera-usb-blaster.cfg -c "adapter_khz 400" -c "transport select jtag" -c "jtag newtap ATF1504AS tap -irlen 3 -expected-id 0x0150403f" -c init -c "svf msxusb.svf" -c "sleep 200" -c shutdown
+ ```
+ 
+If everything went ok you will see something ending like this
+
+```
+Time used: 0m12s613ms 
+svf file programmed successfully for 3299 commands with 0 errors
+shutdown command invoked
+
+```
+
 ### Step 2. Flash memory
 Recommended memory chips is SST39SF040 (512kb) but I also managed to make it work with SST39SF020 (256kb). Then, you will need a programmer such as TL866 II https://aliexpress.com/item/33000308958.html and the file we will write is located at https://github.com/S0urceror/MSX-USB/blob/master/drivers/NextorUsbHost/dist/nextor.rom
 
