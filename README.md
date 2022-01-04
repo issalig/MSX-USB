@@ -59,6 +59,8 @@ The changes are not that big: we will need to convert .pof into .jed and then in
 
 I compiled the following info from different sources https://github.com/marqs85/snes_dejitter/blob/master/README.md, https://github.com/SukkoPera/OpenAmiga500FastRamExpansion/blob/master/firmware/README.md and https://www.hackup.net/2020/01/erasing-and-programming-the-atf1504-cpld/
 
+All the resources for ATMEL CPLDS can be found at https://www.microchip.com/en-us/products/fpgas-and-plds/spld-cplds/pld-design-resources
+
 First we need to download pof2jef from http://ww1.microchip.com/downloads/archive/pof2jed.zip
 Then in winpof2jed.exe (yes it works with wine in linux :))
 ```
