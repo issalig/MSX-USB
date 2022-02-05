@@ -274,8 +274,8 @@ DRV_INIT:
 
 	; reset CH376s
     call CH_RESET
-	; wait ~250ms
-	ld bc, WAIT_ONE_SECOND/4
+	; wait ~100ms
+	ld bc, WAIT_ONE_SECOND/10
 	call WAIT
 	
 	IFDEF __MISTERSPI	
@@ -317,6 +317,8 @@ _HW_TEST_OKAY:
 	jp nz, _USB_MODE_OKAY
     ld hl, TXT_DEVICE_CHECK_NOK
     call PRINT
+	ld bc, WAIT_ONE_SECOND*2
+	call WAIT
     ret
 _USB_MODE_OKAY:
 	push af
@@ -559,6 +561,19 @@ DRV_DIRECT4:
 ;=====  BEGIN of DEVICE-BASED specific routines
 ;=====
 
+CAPS_FLASH:
+    ; CAPS FLASH
+	in a, (0xaa)
+    bit 6,a
+    jr z, _CAPS_FLASH_ON
+	res 6,a
+    jr _CAPS_FLASH
+_CAPS_FLASH_ON:
+    set 6,a
+_CAPS_FLASH:
+	out (0xaa),a
+    ret
+
 ;-----------------------------------------------------------------------------
 ;
 ; Read or write logical sectors from/to a logical unit
@@ -614,11 +629,7 @@ _DEV_RW_DRIVE_A:
 
 _DEV_RW_DRIVE_B: ; Drive B is always USB storage
 DEV_RW_SCSI:
-	; CAPS ON
-	in a, 0xaa
-	res 6,a
-	out 0xaa,a
-	;
+	call CAPS_FLASH
 	pop af
 	jr c, _DEV_WRITE
 	call SCSI_READ
@@ -636,11 +647,7 @@ _DEV_RW_NEXT_4:
 	xor a ; success
 	ret
 _DEV_RW_ERR
-	; CAPS OFF
-	in a, 0xaa
-	set 6,a
-	out 0xaa,a
-	;
+	call CAPS_FLASH
 	ld a, _RNF
 	ld b, 0
 	ret

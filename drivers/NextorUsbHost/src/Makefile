@@ -5,7 +5,7 @@
 # ROOKIEDRIVE	- ASCII16 mapper cartridge with ports 0x20 and 0x21
 # MISTERSPI		- CH376s module connected via SPI to MiSTerFPGA
 
-ASM = /Users/mario/Development/msx/Compilers/sjasmplus/sjasmplus
+ASM = sjasmplus
 ASMFLAGS = --fullpath --raw=$@ --sym=$(basename $@).sym --lst=$(basename $@).lst -D__MSXUSBCARTv1
 RDASMFLAGS = --fullpath --raw=$@ --sym=$(basename $@).sym --lst=$(basename $@).lst -D__ROOKIEDRIVE
 MSTRASMFLAGS = --fullpath --raw=$@ --sym=$(basename $@).sym --lst=$(basename $@).lst -D__MISTERSPI #-D__NOWAIT
@@ -88,9 +88,9 @@ $(OUTPUT_DIR)/OCM-BIOS.DAT: $(OUTPUT_DIR)/nextormstr.rom
 
 $(OUTPUT_DIR)/msxusb.vhd: $(OUTPUT_DIR)/OCM-BIOS.DAT
 	cp msx.vhd $(OUTPUT_DIR)/image.vhd
-	/usr/local/bin/mformat -i $(OUTPUT_DIR)/image.vhd@@512 -t 16 -h 255 -n 63 -H 1 -m 248
-	/usr/local/bin/mcopy -i $(OUTPUT_DIR)/image.vhd@@512 $(OUTPUT_DIR)/OCM-BIOS.DAT ::
-	/usr/local/bin/mattrib -i $(OUTPUT_DIR)/image.vhd@@512 +h ::OCM-BIOS.DAT
+	/opt/homebrew/bin/mformat -i $(OUTPUT_DIR)/image.vhd@@512 -t 16 -h 255 -n 63 -H 1 -m 248
+	/opt/homebrew/bin/mcopy -i $(OUTPUT_DIR)/image.vhd@@512 $(OUTPUT_DIR)/OCM-BIOS.DAT ::
+	/opt/homebrew/bin/mattrib -i $(OUTPUT_DIR)/image.vhd@@512 +h ::OCM-BIOS.DAT
 	mv $(OUTPUT_DIR)/image.vhd $(OUTPUT_DIR)/msxusb.vhd
 	
 clean:
