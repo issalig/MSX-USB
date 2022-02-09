@@ -1,5 +1,5 @@
 # Setting up the development environment
-It is possible and more than recommendable to use openMSX for development and testing. Also there is need to flash roms and you can try different machines. For this task you will also need and arduino UNO or similar (ESP8266 will not work, too few pins, ESP will :) )
+It is possible and more than recommendable to use openMSX for development and testing. Also there is need to flash roms and you can try different machines. For this task you will also need and arduino UNO or similar (ESP8266 will not work, too few pins, ESP32 will do :) )
 
 # Arduino
 The skecth needed is found at https://github.com/S0urceror/MSX-USB/blob/master/hardware/arduino/noobtocol.parallel/noobtocol.parallel.ino and it is basically a bridge between the PC and the ch376s. Thus openMSX will open the serial port send some bytes and the arduino will redirect them to ch376s, get the answer if any and send it to the PC.
