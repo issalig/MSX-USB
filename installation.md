@@ -11,8 +11,8 @@ const int CH_WR = 4;
 const int CH_RD = 3;
 const int CH_PCS = A0;
 const int CH_A0 = A5;
-const int CH_INT = 2;;
-const int CH_D0 = 5;;
+const int CH_INT = 2;
+const int CH_D0 = 5;
 //CH_Dx = CH_D0 + x
 ```
 
