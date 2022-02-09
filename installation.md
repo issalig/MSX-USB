@@ -25,7 +25,9 @@ cd macos
 mkdir build
 make
 ```
+Take into account that you will probably need to edit ```hal.c``` file and set your usb device name ```char device[] = "/dev/ttyUSB0";```
 
+The built executable performs the same operations that will be done in rom but allows you to test it in a more confortable environment.
 
 
 
