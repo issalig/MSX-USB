@@ -17,6 +17,7 @@ const int CH_D0 = 5;;
 ```
 
 Now flash the arduino and we are going to check it with https://github.com/S0urceror/MSX-USB/blob/master/test/usb_via_arduino/src/main.parallel.cpp
+
 If you are in linux you need to add ```#include <assert.h>``` and remove ```-stdlib=libc++``` (https://stackoverflow.com/questions/19774778/when-is-it-necessary-to-use-the-flag-stdlib-libstdc)
 Compile this tool ```make main_parallel``` and run it like ``` parallel /dev/ttyUSB0``` (of course change it according to your device)
 
