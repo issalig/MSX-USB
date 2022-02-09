@@ -1,31 +1,29 @@
 # Setting up the development environment
-It is possible and more than recommendable to use openMSX for development and testing. Also there is need to flash roms and you can try different machines. For this task you will also need and arduino UNO or similar (ESP8266 will not work, too few pins, ESP32 will do :) )
+It is possible and more than recommendable to use openMSX for development and testing. Thus, you do not need to flash roms and you can try it on different machines. For this task you will also need and arduino UNO or similar which will be the bridge between PC and CH376s (ESP8266 will not work, because it has not enough pins but ESP32 should do, any volunteer? )
 
 
 # Compiling rom
-In this section I will focus on the MsxUsbNext rom but this is not a problem because requirements for others will be almost the same.
+In this section I will focus on the MsxUsbNext rom but this is not a problem because requirements for other roms will be almost the same. Code is located at https://github.com/S0urceror/MSX-USB/tree/master/drivers/MsxUsbNext/macos
 
-MsxUsbNext has several parts, macos which is a version to test from the computer (not only macos), and msx which is the version that we will flash on the cartridge, ie., the rom.
+MsxUsbNext has several parts, macos which is a version to test from the computer (it is also valid for linux and maybe for windows with cygwin but not wsl2 which does not support usbs afaik), and msx which is the version that we will flash on the cartridge, ie., the rom.
 
-https://github.com/S0urceror/MSX-USB/tree/master/drivers/MsxUsbNext/macos
-
-You will need to install g++ clang sjasm and sdcc 
+First, you will need to install g++, clang, sjasm, and sdcc.
 ```
 sudo apt-get install g++ clang sjasm sdcc
 ```
-hex2bin which you can get it from https://github.com/ericb59/Fusion-C-v1.2/tree/master/Working%20Folder/Tools/Hex2bin-2.5
+hex2bin is also necessary and you can get it from https://github.com/ericb59/Fusion-C-v1.2/tree/master/Working%20Folder/Tools/Hex2bin-2.5
 
-Also you will need mknexrom https://github.com/Konamiman/Nextor/blob/v2.1/buildtools/linux/mknexrom
+Also you will need mknexrom. The one provided is for MacOS but if you are not in MacOS, just build or download mknexrom from https://github.com/Konamiman/Nextor/blob/v2.1/buildtools/linux/mknexrom and copy it to https://github.com/S0urceror/MSX-USB/tree/master/drivers/MsxUsbNext/msx/kernel 
 
-Once here you should have all the required tools in order to build the rom.
+Once here, you should have all the required tools in order to build the rom.
 
-Go to macos directory, create a build dir and make it!
+Noe, go to macos directory, create a build dir and make it!
 ```
 cd macos
 mkdir build
 make
 ```
-Take into account that you will probably need to edit ```hal.c``` file and set your usb device name ```char device[] = "/dev/ttyUSB0";```
+Take into account that you will probably need to edit ```hal.c``` file and set your usb device name. For example: ```char device[] = "/dev/ttyUSB0";```.
 
 The built executable performs the same operations that will be done in rom but allows you to test it in a more confortable environment.
 
