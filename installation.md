@@ -72,17 +72,18 @@ If you want openMSX to find MSX software referred to from replays or savestates 
 ```
 
 Now it is time to set up your machine. You will need to add the system rom to /opt/openMSX/share/systemroms or ~/.openMSX/share/systemroms  
-You can find them at https://www.planetemu.net/rom/msx-bios/ and in particular I will use https://www.planetemu.net/rom/msx-bios/philips-vg-8020-msx-bios-basic-v1-0-1985-philips
-You can also get them from Fusion-C project https://github.com/ericb59/Fusion-C-v1.2/tree/master/Working%20Folder/Tools/_For%20OpenMSX/systemroms
+You can find get from Fusion-C project https://github.com/ericb59/Fusion-C-v1.2/tree/master/Working%20Folder/Tools/_For%20OpenMSX/systemroms and in particular I will use https://github.com/ericb59/Fusion-C-v1.2/blob/master/Working%20Folder/Tools/_For%20OpenMSX/systemroms/machines/philips/vg8020_basic-bios1.rom
+You can also find roms at https://www.planetemu.net/rom/msx-bios/ 
 
-Then, you should include the ch376s device in the .xml which resides in /opt/openMSX/share/software or ~/.openMSX/share/software.
-In particular, add the following code
+Then, you should include the ch376s device in the .xml which resides in /opt/openMSX/share/software or ~/.openMSX/share/software
+In particular, add the following code in the ```<devices>...</devices>``` section.
 ```
 <CH376s id="ch376s">
       <io base="0x10" num="1" type="IO"/>
       <io base="0x11" num="1" type="IO"/>
 </CH376s>
 ```
+
 Also make sure the rom file is found, maybe you need to check the rom section. Here is what it looks for VG8020.
 ```
 <primary slot="0">
