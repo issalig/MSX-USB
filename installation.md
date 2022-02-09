@@ -84,7 +84,7 @@ In particular, add the following code in the ```<devices>...</devices>``` sectio
 </CH376s>
 ```
 
-Also make sure the rom file is found, maybe you need to check the rom section. Here is what it looks for VG8020.
+Also make sure the rom file is found, maybe you need to check the rom section. Here is how it looks for VG8020.
 ```
 <primary slot="0">
       <ROM id="MSX BIOS with BASIC ROM">
