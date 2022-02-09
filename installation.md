@@ -1,6 +1,34 @@
 # Setting up the development environment
 It is possible and more than recommendable to use openMSX for development and testing. Also there is need to flash roms and you can try different machines. For this task you will also need and arduino UNO or similar (ESP8266 will not work, too few pins, ESP32 will do :) )
 
+
+# Compiling rom
+In this section I will focus on the MsxUsbNext rom but this is not a problem because requirements for others will be almost the same.
+
+MsxUsbNext has several parts, macos which is a version to test from the computer (not only macos), and msx which is the version that we will flash on the cartridge, ie., the rom.
+
+https://github.com/S0urceror/MSX-USB/tree/master/drivers/MsxUsbNext/macos
+
+You will need to install g++ clang sjasm and sdcc 
+```
+sudo apt-get install g++ clang sjasm sdcc
+```
+hex2bin which you can get it from https://github.com/ericb59/Fusion-C-v1.2/tree/master/Working%20Folder/Tools/Hex2bin-2.5
+
+Also you will need mknexrom https://github.com/Konamiman/Nextor/blob/v2.1/buildtools/linux/mknexrom
+
+Once here you should have all the required tools in order to build the rom.
+
+Go to macos directory, create a build dir and make it!
+```
+cd macos
+mkdir build
+make
+```
+
+
+
+
 # Arduino
 The skecth needed is found at https://github.com/S0urceror/MSX-USB/blob/master/hardware/arduino/noobtocol.parallel/noobtocol.parallel.ino and it is basically a bridge between the PC and the ch376s. Thus openMSX will open the serial port send some bytes and the arduino will redirect them to ch376s, get the answer if any and send it to the PC.
 
