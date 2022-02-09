@@ -23,7 +23,7 @@ Compile this tool ```make main_parallel``` and run it like ``` parallel /dev/tty
 
 If everything is ok you will see readData is getting values
 ```
-$ ../dist/main_parallel /dev/tty.usbmodem123451  | more
+$ ../dist/main_parallel /dev/ttyUSB0  | more
 12:02:48:0001 writeCommand (CH_CMD_RESET_ALL) 0x05
 12:02:48:0100 writeCommand (CH_CMD_CHECK_EXIST) 0x06
 writeData (0xbe)
