@@ -1,3 +1,5 @@
+#¡ATENCIÓN! ESTE DOCUMENTO ESTÁ DESACTUALIZADO
+
 # MSX-USB
 ## Mi fork y guía de construcción
 Mi fork proporciona una versión reducida de la pcb con zócalos PLC, una cabecera de expansión, así como una guía de construcción detallada. Todas las demás cosas son iguales a la versión original de S0urceror y desde aquí le mando muchas gracias por compartir sus conocimientos.
