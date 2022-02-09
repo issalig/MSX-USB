@@ -96,3 +96,23 @@ Also make sure the rom file is found, maybe you need to check the rom section. H
       </ROM>
     </primary>
 ```
+
+## Go on
+As a default, the serial device is located at /dev/tty.usbmodem123451 and you can of course change it in the source code but I prefer to do a symbolic link ``` sudo ln -s ttyUSB0 /dev/tty.usbmodem123451``` . If your arduino takes other port, like ttyACM0, just change it.
+ 
+ If there are problems to open the port you will get this message, otherwise port will be found.
+ ```
+$ openmsx -machine Philips_VG_8020 -carta nextor.rom
+failed to open port
+```
+
+If everything is ok you will see sth like
+```
+$ openmsx -machine Philips_VG_8020 -carta ../MSX-USB/drivers/MsxUsbNext/msx/dist/nextor.rom 
+writeCommand (CH_CMD_RESET_ALL) 0x05
+writeCommand (CH_CMD_CHECK_EXIST) 0x06
+writeData (0xbe)
+0x41 = readData ()
+```
+
+If it hangs in readData that usually means pin definition or connections in the Arduino are not ok.
