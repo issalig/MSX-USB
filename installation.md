@@ -1,4 +1,39 @@
-# Installing OpenMSX
+# Setting up the development environment
+It is possible and more than recommendable to use openMSX for development and testing. Also there is need to flash roms and you can try different machines. For this task you will also need and arduino UNO or similar (ESP8266 will not work, too few pins, ESP will :) )
+
+# Arduino
+The skecth needed is found at https://github.com/S0urceror/MSX-USB/blob/master/hardware/arduino/noobtocol.parallel/noobtocol.parallel.ino and it is basically a bridge between the PC and the ch376s. Thus openMSX will open the serial port send some bytes and the arduino will redirect them to ch376s, get the answer if any and send it to the PC.
+
+You may probably need to change the pins and below I show you the ones I used. I recommend you not to use pin 13 (LED pin) because it can cause problems. D0 is pin 5, D1 pin 6 and so on ...
+```
+//CH376 pins to Arduino digital connections mapping
+const int CH_WR = 4;
+const int CH_RD = 3;
+const int CH_PCS = A0;
+const int CH_A0 = A5;
+const int CH_INT = 2;;
+const int CH_D0 = 5;;
+//CH_Dx = CH_D0 + x
+```
+
+Now flash the arduino and we are going to check it with https://github.com/S0urceror/MSX-USB/blob/master/test/usb_via_arduino/src/main.parallel.cpp
+If you are in linux you need to add #include <assert.h> and remove -stdlib=libc++ (https://stackoverflow.com/questions/19774778/when-is-it-necessary-to-use-the-flag-stdlib-libstdc)
+Compile this tool ```make main_parallel``` and run it like ``` parallel /dev/ttyUSB0``` (of course change it according to your device)
+
+If everything is ok you will see readData is getting values
+```
+$ ../dist/main_parallel /dev/tty.usbmodem123451  | more
+12:02:48:0001 writeCommand (CH_CMD_RESET_ALL) 0x05
+12:02:48:0100 writeCommand (CH_CMD_CHECK_EXIST) 0x06
+writeData (0xbe)
+0x41 = readData ()
+...
+```
+
+If this works openMSX will be able to talk to the ch376s, isn't that amazing?
+
+
+# Compiling openMSX
 In order to use ch376s you will need S0urceror's fork of OpenMSX which you can get at https://github.com/S0urceror/openMSX
 ```
 git clone https://github.com/S0urceror/openMSX
