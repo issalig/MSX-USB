@@ -17,7 +17,7 @@ Also you will need mknexrom. The one provided is for MacOS but if you are not in
 
 Once here, you should have all the required tools in order to build the rom.
 
-Noe, go to macos directory, create a build dir and make it!
+Now, go to macos directory, create a build dir and make it!
 ```
 cd macos
 mkdir build
@@ -166,10 +166,15 @@ Also make sure the rom file is found, maybe you need to check the rom section. H
     </primary>
 ```
 
-## Go on
-As a default, the serial device is located at /dev/tty.usbmodem123451 and you can of course change it in the source code but I prefer to do a symbolic link ``` sudo ln -s ttyUSB0 /dev/tty.usbmodem123451``` . If your arduino takes other port, like ttyACM0, just change it.
- 
- If there are problems to open the port you will get this message, otherwise port will be found.
+As a default, the serial device is located at /dev/tty.usbmodem123451 and you can of course change it in the source code but you can also do a symbolic link ``` sudo ln -s ttyUSB0 /dev/tty.usbmodem123451``` . If your arduino takes other port, like ttyACM0, just change it.
+
+And we have everything needed, now it is time to test it, just type:
+ ```
+$ openmsx -machine Philips_VG_8020_MSXUSB -carta nextor.rom
+```
+
+
+If there are problems to open the port you will get this message, otherwise port will be found.
  ```
 $ openmsx -machine Philips_VG_8020_MSXUSB -carta nextor.rom
 failed to open port
