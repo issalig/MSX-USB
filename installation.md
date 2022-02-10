@@ -137,10 +137,13 @@ If you want openMSX to find MSX software referred to from replays or savestates 
 
 Now it is time to set up your machine. You will need to add the system rom to /opt/openMSX/share/systemroms or ~/.openMSX/share/systemroms  
 You can find get from Fusion-C project https://github.com/ericb59/Fusion-C-v1.2/tree/master/Working%20Folder/Tools/_For%20OpenMSX/systemroms and in particular I will use https://github.com/ericb59/Fusion-C-v1.2/blob/master/Working%20Folder/Tools/_For%20OpenMSX/systemroms/machines/philips/vg8020_basic-bios1.rom
-You can also find roms at https://www.planetemu.net/rom/msx-bios/ 
+You can also find other roms at https://www.planetemu.net/rom/msx-bios/ 
 
-Then, you should include the ch376s device in the .xml which resides in /opt/openMSX/share/software or ~/.openMSX/share/software
-In particular, add the following code in the ```<devices>...</devices>``` section.
+Now copy the .xml machine description to your your local configuration 
+```
+cp  /opt/openMSX/share/machines/Philips_VG_8020.xml ~/.openMSX/share/machines/Philips_VG_8020_MSXUSB.xml
+```
+Open the file .xml and include the ch376s device by addind the following lines in the ```<devices>...</devices>``` section.
 ```
 <CH376s id="ch376s">
       <io base="0x10" num="1" type="IO"/>
@@ -148,7 +151,9 @@ In particular, add the following code in the ```<devices>...</devices>``` sectio
 </CH376s>
 ```
 
-Also make sure the rom file is found, maybe you need to check the rom section. Here is how it looks for VG8020.
+**Warning:** If you modify the files in /opt/openMSX/share/machines/ and you recompile and install (make install) your modifications will be lost, that's why it is better to use ~/.openMSX/share/.
+
+Also make sure the rom file is found, maybe you need to check the rom section. Here is how it looks for VG8020 and you should provide vg8020_basic-bios1.rom on r ~/.openMSX/share/systemroms
 ```
 <primary slot="0">
       <ROM id="MSX BIOS with BASIC ROM">
@@ -166,17 +171,17 @@ As a default, the serial device is located at /dev/tty.usbmodem123451 and you ca
  
  If there are problems to open the port you will get this message, otherwise port will be found.
  ```
-$ openmsx -machine Philips_VG_8020 -carta nextor.rom
+$ openmsx -machine Philips_VG_8020_MSXUSB -carta nextor.rom
 failed to open port
 ```
 
 If everything is ok you will see sth like
 ```
-$ openmsx -machine Philips_VG_8020 -carta ../MSX-USB/drivers/MsxUsbNext/msx/dist/nextor.rom 
+$ openmsx -machine Philips_VG_8020_MSXUSB -carta ../MSX-USB/drivers/MsxUsbNext/msx/dist/nextor.rom 
 writeCommand (CH_CMD_RESET_ALL) 0x05
 writeCommand (CH_CMD_CHECK_EXIST) 0x06
 writeData (0xbe)
 0x41 = readData ()
 ```
 
-If it hangs in readData that usually means pin definition or connections in the Arduino are not ok.
+If it hangs in readData that usually means pin definition or connections in the Arduino are not ok. Also it can be some problems with the usb port.
